@@ -1,5 +1,5 @@
 import { IconButton, TextField } from "@fluentui/react";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Draggable from "react-draggable";
 import "./appComponent.scss";
 import { useDispatch } from "react-redux";
@@ -14,9 +14,44 @@ function AppComponent(props) {
 
 	const [showAppMenu, setShowAppMenu] = useState(false);
 	const [currentComponentName, setCurrentComponentName] = useState("");
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const sidebarRef = useRef(null);
 
-	const setComponent = (componentName) => {
+	const setComponent = (componentName, index) => {
 		setCurrentComponentName(componentName);
+		if (index !== undefined) {
+			setCurrentIndex(index);
+		}
+	};
+
+	const navigateBack = () => {
+		if (currentIndex > 0) {
+			const newIndex = currentIndex - 1;
+			setCurrentIndex(newIndex);
+			setCurrentComponentName(props.appInfo.subComponent[newIndex].name);
+			// Trigger UIkit switcher
+			if (sidebarRef.current) {
+				const items = sidebarRef.current.querySelectorAll('li > a');
+				if (items[newIndex]) {
+					items[newIndex].click();
+				}
+			}
+		}
+	};
+
+	const navigateForward = () => {
+		if (currentIndex < props.appInfo.subComponent.length - 1) {
+			const newIndex = currentIndex + 1;
+			setCurrentIndex(newIndex);
+			setCurrentComponentName(props.appInfo.subComponent[newIndex].name);
+			// Trigger UIkit switcher
+			if (sidebarRef.current) {
+				const items = sidebarRef.current.querySelectorAll('li > a');
+				if (items[newIndex]) {
+					items[newIndex].click();
+				}
+			}
+		}
 	};
 
 	return (
@@ -46,6 +81,7 @@ function AppComponent(props) {
 						<ul
 							className="uk-list sidebar-list uk-margin-large-top"
 							uk-switcher={"connect: ." + props.appInfo.id}
+							ref={sidebarRef}
 						>
 							{props.appInfo.subComponent.map(
 								(component, index) => {
@@ -57,7 +93,7 @@ function AppComponent(props) {
 											<a
 												className="uk-link-reset"
 												onClick={() =>
-													setComponent(component.name)
+													setComponent(component.name, index)
 												}
 												href={() => false}
 											>
@@ -77,7 +113,7 @@ function AppComponent(props) {
 						"uk-width-expand@s " +
 							(props.appInfo.isApplication &&
 								props.appInfo.isMaximized) ||
-						props.appInfo.isApplication
+							props.appInfo.isApplication
 							? "maximized-application"
 							: "app-content-container"
 					}
@@ -89,8 +125,8 @@ function AppComponent(props) {
 									<img
 										src={
 											props.appInfo.icon !== undefined &&
-											props.appInfo.icon !== null &&
-											props.appInfo.icon !== ""
+												props.appInfo.icon !== null &&
+												props.appInfo.icon !== ""
 												? props.appInfo.icon
 												: ""
 										}
@@ -149,11 +185,15 @@ function AppComponent(props) {
 									iconProps={{ iconName: "Back" }}
 									title="Back"
 									ariaLabel="Back"
+									onClick={navigateBack}
+									disabled={currentIndex === 0}
 								/>
 								<IconButton
 									iconProps={{ iconName: "Forward" }}
 									title="Forward"
 									ariaLabel="Forward"
+									onClick={navigateForward}
+									disabled={currentIndex === props.appInfo.subComponent.length - 1}
 								/>
 								<TextField
 									disabled
@@ -209,7 +249,8 @@ function AppComponent(props) {
 														className="uk-link-reset"
 														onClick={() =>
 															setComponent(
-																component.name
+																component.name,
+																index
 															)
 														}
 														href={() => false}
