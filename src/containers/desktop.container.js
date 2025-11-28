@@ -21,8 +21,10 @@ function DesktopContainer() {
 		id: MENU_ID,
 	});
 	function handleContextMenu(event) {
-		event.preventDefault();
-		show(event, {
+		if (event) {
+			event.preventDefault();
+		}
+		show(event || {}, {
 			props: {
 				key: "value",
 			},
