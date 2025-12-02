@@ -26,20 +26,141 @@
 	overflow: hidden;
 }
 
+@media screen and (max-width: 1024px) {
+	.start-menu {
+		width: 60vw !important;
+		height: 75vh !important;
+		top: calc(50% - 37.5vh) !important;
+		left: calc(50% - 30vw) !important;
+	}
+
+	.start-app-list {
+		width: calc((100% - 42px) - 65%) !important;
+	}
+
+	.start-tiles {
+		width: calc((100% - 42px) - 35%) !important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.start-menu {
+		width: 80vw !important;
+		height: 80vh !important;
+		top: calc(50% - 40vh) !important;
+		left: calc(50% - 40vw) !important;
+		border-radius: 8px !important;
+	}
+
+	.start-app-list {
+		width: calc((100% - 42px) - 60%) !important;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.start-tiles {
+		width: calc((100% - 42px) - 40%) !important;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.start-menu-list-item {
+		font-size: 13px !important;
+		padding: 8px !important;
+	}
+
+	.quick-action-button {
+		width: 38px !important;
+		height: 38px !important;
+	}
+}
+
 @media screen and (max-width: 640px) {
 	.start-menu {
 		width: 100vw !important;
+		left: 0 !important;
+		top: 0 !important;
+		height: calc(100% - 45px) !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
+	}
+
+	.start-quick-actions {
+		width: 40px !important;
 	}
 
 	.start-app-list {
 		width: 0 !important;
-		display: none;
+		display: none !important;
 	}
 
 	.start-tiles {
-		width: calc(100% - 42px);
+		width: calc(100% - 40px) !important;
 		height: 100% !important;
-		overflow: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.start-menu-list-item {
+		font-size: 12px !important;
+		padding: 8px !important;
+	}
+
+	.quick-action-button {
+		width: 36px !important;
+		height: 36px !important;
+	}
+
+	.profile-card {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.start-menu {
+		height: calc(100% - 50px) !important;
+	}
+
+	.start-tiles {
+		width: calc(100% - 38px) !important;
+	}
+
+	.start-quick-actions {
+		width: 38px !important;
+	}
+
+	.start-menu-list-item {
+		font-size: 11px !important;
+		padding: 6px !important;
+	}
+
+	.quick-action-button {
+		width: 34px !important;
+		height: 34px !important;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.start-menu {
+		height: calc(100% - 52px) !important;
+	}
+
+	.start-tiles {
+		width: calc(100% - 36px) !important;
+	}
+
+	.start-quick-actions {
+		width: 36px !important;
+	}
+
+	.start-menu-list-item {
+		font-size: 10px !important;
+		padding: 5px !important;
+	}
+
+	.quick-action-button {
+		width: 32px !important;
+		height: 32px !important;
 	}
 }
 

@@ -10,6 +10,7 @@ import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import * as serviceWorker from "./serviceWorker";
+import "react-resizable/css/styles.css";
 
 initializeIcons();
 ReactDOM.render(

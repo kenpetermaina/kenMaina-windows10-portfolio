@@ -20,10 +20,8 @@ function LockScreen(props) {
 		id: MENU_ID,
 	});
 	function handleContextMenu(event) {
-		if (event) {
-			event.preventDefault();
-		}
-		show(event || {}, {
+		show({
+			event: event,
 			props: {
 				key: "value",
 			},

@@ -1,0 +1,279 @@
+.window-frame {
+    position: absolute;
+    background: #1c1c1e;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow:
+            0 10px 26px rgba(0, 0, 0, 0.55),
+            0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 4px;
+        bottom: 4px;
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid rgba(255, 255, 255, 0.25);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+        pointer-events: none;
+    }
+
+    &.maximized {
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+    }
+
+    .title-bar {
+        height: 38px;
+        background: linear-gradient(to bottom, #28282b 0%, #1e1e20 100%);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 8px;
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+
+    .app-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #f5f5f7;
+        font-size: 14px;
+        font-weight: 500;
+
+        img {
+            border-radius: 4px;
+        }
+    }
+
+    .app-top-functions {
+        display: flex;
+        gap: 2px;
+
+        button {
+            height: 100%;
+            width: 42px;
+            border-radius: 4px;
+            color: #f5f5f7;
+            background: transparent;
+            transition: background 0.15s ease;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.12);
+            }
+
+            &.close-button:hover {
+                background: #ff4c4c !important;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.window-content {
+    padding: 12px;
+    flex: 1;
+    overflow: auto;
+    color: #e6e6e6;
+}
+
+@media screen and (max-width: 1024px) {
+    .window-frame {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+
+    .title-bar {
+        height: 36px;
+        padding: 0 6px;
+    }
+
+    .app-title {
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    .app-top-functions button {
+        width: 38px;
+    }
+
+    .window-content {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .window-frame {
+        top: 10px !important;
+        left: 10px !important;
+        width: calc(100% - 20px) !important;
+        height: calc(100% - 60px) !important;
+        border-radius: 8px !important;
+        max-width: 100%;
+    }
+
+    .window-frame::after {
+        display: none;
+    }
+
+    .title-bar {
+        height: 34px;
+        padding: 0 5px;
+    }
+
+    .app-title {
+        font-size: 12px;
+        gap: 5px;
+    }
+
+    .app-title img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .app-top-functions button {
+        width: 36px;
+        border-radius: 3px;
+    }
+
+    .window-content {
+        padding: 8px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .window-frame {
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: calc(100% - 45px) !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        position: fixed !important;
+        max-width: 100%;
+    }
+
+    .window-frame::after {
+        display: none;
+    }
+
+    .window-frame:hover {
+        border-color: rgba(255, 255, 255, 0.06);
+        box-shadow: none;
+    }
+
+    .window-frame.maximized {
+        height: calc(100% - 45px) !important;
+    }
+
+    .title-bar {
+        height: 32px;
+        padding: 0 4px;
+    }
+
+    .app-title {
+        font-size: 11px;
+        gap: 4px;
+    }
+
+    .app-title img {
+        width: 14px;
+        height: 14px;
+    }
+
+    .app-top-functions {
+        gap: 1px;
+    }
+
+    .app-top-functions button {
+        width: 32px;
+        border-radius: 2px;
+    }
+
+    .window-content {
+        padding: 6px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .window-frame {
+        height: calc(100% - 50px) !important;
+    }
+
+    .title-bar {
+        height: 30px;
+        padding: 0 3px;
+    }
+
+    .app-title {
+        font-size: 10px;
+        gap: 3px;
+    }
+
+    .app-title img {
+        width: 12px;
+        height: 12px;
+        display: none;
+    }
+
+    .app-top-functions button {
+        width: 28px;
+        font-size: 12px;
+    }
+
+    .window-content {
+        padding: 4px;
+        font-size: 11px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .window-frame {
+        height: calc(100% - 52px) !important;
+    }
+
+    .title-bar {
+        height: 28px;
+        padding: 0 2px;
+    }
+
+    .app-title {
+        font-size: 9px;
+        gap: 2px;
+    }
+
+    .app-title img {
+        display: none;
+    }
+
+    .app-top-functions button {
+        width: 24px;
+        font-size: 10px;
+    }
+
+    .window-content {
+        padding: 3px;
+        font-size: 10px;
+    }
+}

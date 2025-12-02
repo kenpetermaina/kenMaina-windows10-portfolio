@@ -1,145 +1,186 @@
-@import "../../theme/variables";
+// Recreated appComponent.scss
+// The original file was missing.
+// Most layout is handled by UIkit classes (uk-*).
 
-.app-component {
-	// display: inline-block !important;
-	height: 80% !important;
-	width: 80% !important;
-}
-
-@media only screen and (max-width: 640px) {
-	.app-component {
-		width: 95% !important;
-	}
-}
-
-.app-topbar {
-	height: 32px !important;
-	width: 100% !important;
-	color: var(--font-white) !important;
-	border-bottom-right-radius: unset !important;
-	border-bottom-left-radius: unset !important;
-}
-
-.close-button:hover {
-	color: var(--color-white);
-	background-color: var(--color-red);
-}
-
-.title-bar {
-	width: calc(100% - 140px) !important;
-}
-
-.app-top-functions {
-	width: 100px !important;
-}
-
-.maximized {
-	// margin-left: -10% !important;
-	width: 100% !important;
-	height: calc(100% - 40px) !important;
+.app-sidebar {
+    background: rgba(255, 255, 255, 0.1);
+    width: 200px;
+    height: 100%;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .app-content-container {
-	height: 100% !important;
-	width: 80% !important;
-}
-
-.maximized-application {
-	height: 100% !important;
-	width: 100% !important;
-}
-
-.app-sidebar {
-	height: 100% !important;
-	width: 20% !important;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .app-content {
-	height: calc(100% - 32px) !important;
-	width: 100% !important;
-	overflow-y: scroll !important;
-	overflow-x: hidden !important;
-}
-
-.scrollbar::-webkit-scrollbar {
-	width: 10px;
-}
-
-.scrollbar::-webkit-scrollbar-thumb {
-	background-color: #babac0;
-	border-radius: 16px;
-}
-
-.scrollbar::-webkit-scrollbar-button {
-	display: none;
-}
-
-.app-title {
-	border-bottom-right-radius: unset !important;
-	border-bottom-left-radius: unset !important;
-	width: 200px !important;
-	height: 100% !important;
-}
-
-.sidebar-list {
-	color: var(--font-white) !important;
-}
-
-.sidebar-list-item {
-	cursor: pointer !important;
-	padding: 10px !important;
-}
-
-.sidebar-list :hover {
-	background-color: rgb(50, 49, 48) !important;
-}
-
-.sidebar-list {
-	.uk-active {
-		background-color: rgb(50, 49, 48) !important;
-		border-left: 5px solid;
-		border-color: var(--color-blue) !important;
-		font-weight: bold;
-	}
-}
-
-.app-nav-bar {
-	width: 100%;
-	margin-left: 0px !important;
-	height: 25px !important;
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px;
 }
 
 .disabled-text-field {
-	.ms-TextField-wrapper {
-		.ms-TextField-fieldGroup {
-			.ms-TextField-field {
-				background: none rgb(50, 49, 48) !important;
-				color: rgb(121, 119, 117) !important;
-				border: none rgb(50, 49, 48) !important;
-			}
-			border: 0px !important;
-		}
-	}
-}
-
-.isApplication {
-	display: none !important;
-}
-
-.isApplication-list {
-	height: 96% !important;
-}
-
-.dropdown-content {
-	position: absolute;
-	min-width: 160px;
-	z-index: 10000;
-}
-
-.show-element {
-	display: block !important;
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .hide-element {
-	display: none !important;
+    display: none !important;
+}
+
+.show-element {
+    display: block !important;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 10px;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.app-nav-bar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    gap: 8px;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.blur {
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 1024px) {
+    .app-sidebar {
+        width: 180px;
+    }
+
+    .app-content {
+        padding: 6px;
+        font-size: 13px;
+    }
+
+    .dropdown-content {
+        min-width: 180px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .app-sidebar {
+        width: 160px;
+    }
+
+    .app-content {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .app-nav-bar {
+        padding: 6px;
+        gap: 6px;
+    }
+
+    .dropdown-content {
+        min-width: 160px;
+        left: 5px;
+        top: 36px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .app-sidebar {
+        width: 140px;
+    }
+
+    .app-content {
+        padding: 4px;
+        font-size: 11px;
+    }
+
+    .app-nav-bar {
+        padding: 4px;
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+
+    .dropdown-content {
+        min-width: 140px;
+        left: 3px;
+        top: 32px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .app-sidebar {
+        width: 120px;
+        position: relative;
+    }
+
+    .app-content {
+        padding: 3px;
+        font-size: 10px;
+    }
+
+    .app-nav-bar {
+        padding: 3px;
+        gap: 3px;
+        font-size: 10px;
+    }
+
+    .dropdown-content {
+        min-width: 120px;
+        left: 2px;
+        top: 28px;
+        padding: 6px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .app-sidebar {
+        width: 100px;
+    }
+
+    .app-content {
+        padding: 2px;
+        font-size: 9px;
+    }
+
+    .app-nav-bar {
+        padding: 2px;
+        gap: 2px;
+        font-size: 9px;
+    }
+
+    .dropdown-content {
+        min-width: 100px;
+        left: 1px;
+        top: 24px;
+        padding: 4px;
+    }
 }

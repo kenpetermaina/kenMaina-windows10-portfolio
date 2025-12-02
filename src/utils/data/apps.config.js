@@ -68,7 +68,7 @@ const appConfig = [
 		icon: vsCode,
 		isApplication: true,
 		showInDesktop: true,
-		showLinks: true,
+		showLinks: false,
 		subComponent: [
 			{
 				name: "VSCode",
@@ -83,7 +83,7 @@ const appConfig = [
 		icon: jioSaavn,
 		isApplication: true,
 		showInDesktop: true,
-		showLinks: true,
+		showLinks: false,
 		subComponent: [
 			{
 				name: "jioSaavn",
@@ -98,7 +98,7 @@ const appConfig = [
 		icon: mail,
 		isApplication: true,
 		showInDesktop: true,
-		showLinks: true,
+		showLinks: false,
 		subComponent: [
 			{
 				name: "mail",
@@ -113,7 +113,7 @@ const appConfig = [
 		icon: chrome,
 		isApplication: true,
 		showInDesktop: true,
-		showLinks: true,
+		showLinks: false,
 		subComponent: [
 			{
 				name: "chrome",
@@ -128,7 +128,7 @@ const appConfig = [
 		icon: word,
 		isApplication: true,
 		showInDesktop: true,
-		showLinks: true,
+		showLinks: false,
 		subComponent: [
 			{
 				name: "word",
@@ -143,7 +143,7 @@ const appConfig = [
 		icon: spreadsheet,
 		isApplication: true,
 		showInDesktop: true,
-		showLinks: true,
+		showLinks: false,
 		subComponent: [
 			{
 				name: "spreedsheet",
@@ -158,7 +158,7 @@ const appConfig = [
 		icon: settings,
 		showInDesktop: false,
 		isApplication: false,
-		showLinks: true,
+		showLinks: false,
 		subComponent: [
 			{
 				name: "Background",

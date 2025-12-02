@@ -1,10 +1,9 @@
 import { IconButton, TextField } from "@fluentui/react";
 import React, { useState, useRef } from "react";
-import Draggable from "react-draggable";
 import "./appComponent.scss";
 import { useDispatch } from "react-redux";
 import { handleAppFunctions } from "../../utils/actions/app.action";
-import { ACTION_TYPES } from "../../utils/documents/enums";
+import WindowFrame from "../windowFrame/windowFrame";
 
 function AppComponent(props) {
 	const dispatch = useDispatch();
@@ -25,7 +24,7 @@ function AppComponent(props) {
 	};
 
 	const navigateBack = () => {
-		if (currentIndex > 0) {
+		if (currentIndex > 0 && props.appInfo.subComponent) {
 			const newIndex = currentIndex - 1;
 			setCurrentIndex(newIndex);
 			setCurrentComponentName(props.appInfo.subComponent[newIndex].name);
@@ -40,7 +39,7 @@ function AppComponent(props) {
 	};
 
 	const navigateForward = () => {
-		if (currentIndex < props.appInfo.subComponent.length - 1) {
+		if (props.appInfo.subComponent && currentIndex < props.appInfo.subComponent.length - 1) {
 			const newIndex = currentIndex + 1;
 			setCurrentIndex(newIndex);
 			setCurrentComponentName(props.appInfo.subComponent[newIndex].name);
@@ -55,22 +54,11 @@ function AppComponent(props) {
 	};
 
 	return (
-		<Draggable
-			axis={"both"}
-			allowAnyClick={false}
-			bounds={"parent"}
-			position={null}
-			grid={[1, 1]}
-			scale={1}
-			defaultPosition={{ x: 0, y: 0 }}
-			handle=".title-bar"
+		<WindowFrame
+			appInfo={props.appInfo}
+			onFunctionClick={handleAppFunctionClick}
 		>
-			<div
-				className={
-					"app-component  uk-border-rounded uk-box-shadow-medium uk-flex uk-flex-row " +
-					(props.appInfo.isMaximized ? "maximized" : "")
-				}
-			>
+			<div className="uk-flex uk-flex-row uk-height-1-1 uk-width-1-1">
 				{props.appInfo.showLinks && (
 					<div
 						className={
@@ -83,7 +71,7 @@ function AppComponent(props) {
 							uk-switcher={"connect: ." + props.appInfo.id}
 							ref={sidebarRef}
 						>
-							{props.appInfo.subComponent.map(
+							{props.appInfo.subComponent && props.appInfo.subComponent.map(
 								(component, index) => {
 									return (
 										<li
@@ -111,73 +99,15 @@ function AppComponent(props) {
 				<div
 					className={
 						"uk-width-expand@s " +
-							(props.appInfo.isApplication &&
-								props.appInfo.isMaximized) ||
+						((props.appInfo.isApplication &&
+							props.appInfo.isMaximized) ||
 							props.appInfo.isApplication
 							? "maximized-application"
-							: "app-content-container"
+							: "app-content-container")
 					}
 				>
-					<div className="app-topbar blur uk-border-rounded uk-grid uk-margin-remove">
-						<div className="title-bar uk-margin-remove uk-padding-remove">
-							<div className="app-title  uk-background-secondary uk-border-rounded">
-								<span className="uk-margin-medium-right uk-margin-small-left">
-									<img
-										src={
-											props.appInfo.icon !== undefined &&
-												props.appInfo.icon !== null &&
-												props.appInfo.icon !== ""
-												? props.appInfo.icon
-												: ""
-										}
-										alt={props.appInfo.name}
-										width="20"
-										height="20"
-										className="uk-margin-small-right"
-									/>
-									<span className="uk-margin-small-top">
-										{props.appInfo.name}
-									</span>
-								</span>
-							</div>
-						</div>
-						<div className="app-top-functions uk-flex">
-							<IconButton
-								iconProps={{ iconName: "ChromeMinimize" }}
-								title="Minimize"
-								ariaLabel="Minimize"
-								onClick={() =>
-									handleAppFunctionClick(
-										props.appInfo,
-										ACTION_TYPES.MINIMIZE
-									)
-								}
-							/>
-							<IconButton
-								iconProps={{ iconName: "ChromeRestore" }}
-								title="Restore"
-								ariaLabel="Restore"
-								onClick={() =>
-									handleAppFunctionClick(
-										props.appInfo,
-										ACTION_TYPES.MAXIMIZE
-									)
-								}
-							/>
-							<IconButton
-								iconProps={{ iconName: "ChromeClose" }}
-								title="Close"
-								ariaLabel="Close"
-								className="close-button"
-								onClick={() =>
-									handleAppFunctionClick(
-										props.appInfo,
-										ACTION_TYPES.CLOSE
-									)
-								}
-							/>
-						</div>
-					</div>
+					{/* Title bar is now handled by WindowFrame */}
+
 					<div className="app-content uk-background-secondary scrollbar">
 						{!props.appInfo.isApplication && (
 							<div className="app-nav-bar uk-padding-small uk-flex">
@@ -193,7 +123,7 @@ function AppComponent(props) {
 									title="Forward"
 									ariaLabel="Forward"
 									onClick={navigateForward}
-									disabled={currentIndex === props.appInfo.subComponent.length - 1}
+									disabled={currentIndex === (props.appInfo.subComponent ? props.appInfo.subComponent.length - 1 : 0)}
 								/>
 								<TextField
 									disabled
@@ -233,7 +163,7 @@ function AppComponent(props) {
 										"connect: ." + props.appInfo.id
 									}
 								>
-									{props.appInfo.subComponent.map(
+									{props.appInfo.subComponent && props.appInfo.subComponent.map(
 										(component, index) => {
 											return (
 												<li
@@ -276,7 +206,7 @@ function AppComponent(props) {
 									: "")
 							}
 						>
-							{props.appInfo.subComponent.map(
+							{props.appInfo.subComponent && props.appInfo.subComponent.map(
 								(component, index) => {
 									return (
 										<li
@@ -294,7 +224,7 @@ function AppComponent(props) {
 					</div>
 				</div>
 			</div>
-		</Draggable>
+		</WindowFrame>
 	);
 }
 

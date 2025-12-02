@@ -10,6 +10,26 @@
 
 	--font-medium: 18px !important;
 
+	/* Responsive breakpoints */
+	--xs-screen: 320px !important;
+	--sm-screen: 480px !important;
+	--md-screen: 640px !important;
 	--medium-screen: 640px !important;
+	--lg-screen: 768px !important;
+	--xl-screen: 1024px !important;
 	--small-screen: 960px;
+	--xxl-screen: 1280px !important;
+
+	/* Responsive spacing */
+	--spacing-xs: 4px;
+	--spacing-sm: 8px;
+	--spacing-md: 12px;
+	--spacing-lg: 16px;
+	--spacing-xl: 24px;
+
+	/* Responsive font sizes */
+	--font-size-sm: 12px;
+	--font-size-base: 14px;
+	--font-size-md: 16px;
+	--font-size-lg: 18px;
 }

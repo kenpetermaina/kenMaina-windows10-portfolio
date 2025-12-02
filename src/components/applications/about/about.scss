@@ -16,3 +16,17 @@
 		line-height: 1.5;
 	}
 }
+
+@media screen and (max-width: 640px) {
+	.profile-card {
+		padding: 10px;
+
+		h3 {
+			font-size: 1.2rem;
+		}
+
+		p {
+			font-size: 0.9rem;
+		}
+	}
+}
