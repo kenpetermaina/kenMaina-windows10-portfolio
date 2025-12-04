@@ -1,5 +1,6 @@
 import React from "react";
 import Spreadsheet from "react-spreadsheet";
+import './spreadsheet.application.scss';
 
 function SpreadsheetApp() {
 	const data = () => {
@@ -27,8 +28,17 @@ function SpreadsheetApp() {
 		return data;
 	};
 	return (
-		<div className="height-100 ">
-			<Spreadsheet data={data()} />
+		<div className="spreadsheet-app-container">
+			<div className="spreadsheet-toolbar">
+				<button className="toolbar-btn">Copy</button>
+				<button className="toolbar-btn">Paste</button>
+				<button className="toolbar-btn">Format</button>
+				<button className="toolbar-btn">Insert</button>
+				<button className="toolbar-btn">Delete</button>
+			</div>
+			<div className="spreadsheet-grid">
+				<Spreadsheet data={data()} />
+			</div>
 		</div>
 	);
 }

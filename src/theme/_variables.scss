@@ -1,16 +1,54 @@
 :root {
+	/* ===== EXISTING COLOR VARIABLES ===== */
 	--color-primary: #000000;
 	--color-white: #ffffff;
 	--color-red: #ff0000;
 	--color-blue: #00a2ed;
 	--color-secondary: rgb(34, 34, 34);
 
+	/* ===== EXTENDED COLOR PALETTE ===== */
+	--color-alert: #ff4c4c;
+	--color-success: #34c759;
+	--color-warning: #ff9500;
+	--color-info: #30b0c0;
+
+	/* ===== BACKGROUND COLORS ===== */
+	--bg-primary: #1c1c1e;
+	--bg-secondary: #28282b;
+	--bg-tertiary: #1e1e20;
+	--bg-light: #2c2c2e;
+	--bg-lighter: #3a3a3c;
+
+	/* ===== TEXT COLORS ===== */
+	--text-primary: #f5f5f7;
+	--text-secondary: #a4a4a4;
+	--text-tertiary: #8e8e93;
 	--font-white: rgb(250, 249, 248);
 	--font-light-grey: #a4a4a4;
 
-	--font-medium: 18px !important;
+	/* ===== BORDER & DIVIDER ===== */
+	--border-light: rgba(255, 255, 255, 0.06);
+	--border-medium: rgba(255, 255, 255, 0.1);
+	--border-heavy: rgba(255, 255, 255, 0.15);
 
-	/* Responsive breakpoints */
+	/* ===== OVERLAY LAYERS ===== */
+	--overlay-light: rgba(255, 255, 255, 0.06);
+	--overlay-medium: rgba(255, 255, 255, 0.1);
+	--overlay-heavy: rgba(0, 0, 0, 0.55);
+	--overlay-hover: rgba(255, 255, 255, 0.12);
+	--overlay-active: rgba(0, 162, 237, 0.2);
+
+	/* ===== EXISTING SPACING ===== */
+	--spacing-xs: 4px;
+	--spacing-sm: 8px;
+	--spacing-md: 12px;
+	--spacing-lg: 16px;
+	--spacing-xl: 24px;
+	--spacing-2xl: 32px;
+	--spacing-3xl: 48px;
+	--spacing-4xl: 64px;
+
+	/* ===== EXISTING RESPONSIVE BREAKPOINTS ===== */
 	--xs-screen: 320px !important;
 	--sm-screen: 480px !important;
 	--md-screen: 640px !important;
@@ -20,16 +58,38 @@
 	--small-screen: 960px;
 	--xxl-screen: 1280px !important;
 
-	/* Responsive spacing */
-	--spacing-xs: 4px;
-	--spacing-sm: 8px;
-	--spacing-md: 12px;
-	--spacing-lg: 16px;
-	--spacing-xl: 24px;
+	/* ===== EXTENDED TYPOGRAPHY SCALE ===== */
+	--font-size-xs: 9px;
+	--font-size-sm: 11px;
+	--font-size-base: 13px;
+	--font-size-md: 14px;
+	--font-size-lg: 16px;
+	--font-size-xl: 18px;
+	--font-size-2xl: 24px;
+	--font-medium: 18px !important;
 
-	/* Responsive font sizes */
-	--font-size-sm: 12px;
-	--font-size-base: 14px;
-	--font-size-md: 16px;
-	--font-size-lg: 18px;
+	/* ===== FONT WEIGHTS ===== */
+	--font-weight-light: 300;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
+	/* ===== LINE HEIGHTS ===== */
+	--line-height-tight: 1.2;
+	--line-height-normal: 1.5;
+	--line-height-relaxed: 1.6;
+	--line-height-loose: 1.8;
+
+	/* ===== TRANSITION TIMING ===== */
+	--transition-fast: 0.1s ease;
+	--transition-base: 0.15s ease;
+	--transition-slow: 0.25s ease;
+
+	/* ===== SHADOW SYSTEM ===== */
+	--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+	--shadow-md: 0 8px 20px rgba(0, 0, 0, 0.45);
+	--shadow-lg: 0 10px 26px rgba(0, 0, 0, 0.55);
+	--shadow-window: 0 8px 20px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
+	--shadow-window-hover: 0 10px 26px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
 }

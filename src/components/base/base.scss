@@ -26,14 +26,30 @@
 }
 
 .app-icon:hover {
-	background: rgba(74, 74, 74, 0.5) !important;
-	backdrop-filter: blur(20px) !important;
-	-webkit-backdrop-filter: blur(20px) !important;
-	cursor: pointer;
+background: rgba(74, 74, 74, 0.5) !important;
+backdrop-filter: blur(20px) !important;
+-webkit-backdrop-filter: blur(20px) !important;
+cursor: pointer;
+}
+
+.app-icon:focus-visible {
+outline: 2px solid var(--color-blue);
+outline-offset: 2px;
+border-radius: 4px;
 }
 
 .app-icon:active {
-	transform: scale(0.95);
+transform: scale(0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+.app-icon {
+transition: none;
+}
+
+.app-icon:active {
+transform: none;
+}
 }
 
 /* Responsive improvements */
@@ -107,4 +123,12 @@
 		min-height: 24px;
 		padding: 1px;
 	}
+}
+
+/* Social Block Horizontal Alignment */
+.social-block {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
 }

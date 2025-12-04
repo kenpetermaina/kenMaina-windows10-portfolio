@@ -154,6 +154,7 @@ export default function WindowFrame({ children, appInfo, onFunctionClick }) {
         setIsDragging(true);
         setMouseStart({ x: e.clientX, y: e.clientY });
         setStartPos(position);
+        frameRef.current?.classList.add('dragging');
     };
 
     const dragMove = (e) => {
@@ -170,6 +171,7 @@ export default function WindowFrame({ children, appInfo, onFunctionClick }) {
 
     const stopDrag = () => {
         setIsDragging(false);
+        frameRef.current?.classList.remove('dragging');
     };
 
     // ----------------------------------------------
@@ -236,13 +238,15 @@ export default function WindowFrame({ children, appInfo, onFunctionClick }) {
 
     return (
         <div
-            className={`window-frame ${appInfo.isMaximized ? "maximized" : ""}`}
+            className={`window-frame ${appInfo.isMaximized ? "maximized" : ""} launching`}
             ref={frameRef}
             style={containerStyle}
             onMouseMove={handleMouseMove}
             onMouseDown={handleMouseDown}
             tabIndex={0}
             onKeyDown={handleKeyDown}
+            role="dialog"
+            aria-label={appInfo.name}
         >
             <div className="title-bar" onMouseDown={startDrag} onDoubleClick={() =>
                 onFunctionClick(appInfo, ACTION_TYPES.MAXIMIZE)

@@ -1,32 +1,30 @@
 @import "../../../theme/variables";
+@import "../../../theme/mixins";
 
 .mail-card {
-	border: 2px solid #f5f7fa;
+	border: 1px solid var(--border-light);
+	background: var(--overlay-light);
 }
 
 .profile-card {
-	padding: 20px;
+	padding: var(--spacing-xl);
+	color: var(--text-primary);
 
 	h3 {
-		font-size: 1.5rem;
+		@include responsive-font(24px, 20px, 18px);
+		margin-bottom: var(--spacing-md);
+		font-weight: 600;
 	}
 
 	p {
-		font-size: 1rem;
-		line-height: 1.5;
+		@include responsive-font(16px, 14px, 13px);
+		line-height: 1.6;
+		color: var(--text-secondary);
 	}
 }
 
 @media screen and (max-width: 640px) {
 	.profile-card {
-		padding: 10px;
-
-		h3 {
-			font-size: 1.2rem;
-		}
-
-		p {
-			font-size: 0.9rem;
-		}
+		padding: var(--spacing-md);
 	}
 }

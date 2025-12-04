@@ -21,7 +21,7 @@ function SocialBlock() {
 	};
 
 	return (
-		<div>
+		<div className="social-block">
 			{user.gitHub !== undefined &&
 				user.gitHub !== null &&
 				user.gitHub !== "" && (

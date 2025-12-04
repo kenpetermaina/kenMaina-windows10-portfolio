@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import LockWallpaperScreen from "../components/lockScreen/landing.lockScreen";
-import lockScreenWall from "../assets/images/wallpapers/lockScreenWall.jpg";
 import SignInScreen from "../components/lockScreen/signIn.lockScreen";
 import { useContextMenu } from "react-contexify";
 import "react-contexify/dist/ReactContexify.css";
 import DesktopContextMenu from "../components/contextMenu/desktop.contextMenu";
 import { SCREENS } from "../utils/documents/enums";
+
+const lockScreenWall = `${process.env.PUBLIC_URL}/images/wallpapers/lockScreenWall.jpg`;
 
 const MENU_ID = "context-menu";
 
@@ -28,6 +29,12 @@ function LockScreen(props) {
 		});
 	}
 
+	const handleKeyPress = (e) => {
+		if (e.key === "Enter" || e.key === " ") {
+			changeScreenState();
+		}
+	};
+
 	return (
 		<div
 			className="uk-background-cover uk-background-muted screenHeight"
@@ -36,6 +43,10 @@ function LockScreen(props) {
 			}}
 			onClick={changeScreenState}
 			onContextMenu={handleContextMenu}
+			role="button"
+			tabIndex="0"
+			onKeyDown={handleKeyPress}
+			aria-label="Unlock screen"
 		>
 			{(() => {
 				if (showSignInPage) {

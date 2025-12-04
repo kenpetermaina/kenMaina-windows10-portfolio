@@ -1,9 +1,10 @@
-import { IconButton, TextField } from "@fluentui/react";
 import React, { useState } from "react";
+import './chrome.application.scss';
 
 function Chrome() {
 	const [urlToShow, seturlToShow] = useState("https://www.google.com/");
 	const [url, seturl] = useState("https://www.google.com/webhp?igu=1");
+
 	const onURLChange = (event) => {
 		const target = event.target;
 		seturlToShow(target.value);
@@ -13,41 +14,41 @@ function Chrome() {
 		seturl(urlToShow);
 	};
 
+	const handleKeyDown = (e) => {
+		if (e.key === 'Enter') {
+			onGO();
+		}
+	};
+
 	return (
-		<div className="height-100">
-			<div>
-				<div className="app-nav-bar uk-padding-small uk-flex">
-					<IconButton
-						iconProps={{ iconName: "Back" }}
-						title="Back"
-						ariaLabel="Back"
-					/>
-					<IconButton
-						iconProps={{ iconName: "Forward" }}
-						title="Forward"
-						ariaLabel="Forward"
-					/>
-					<TextField
-						className="uk-margin-small-right disabled-text-field uk-width-1-1"
-						placeholder="Type a URL"
-						value={urlToShow}
-						onChange={onURLChange}
-					/>
-					<IconButton
-						iconProps={{ iconName: "ChevronRightSmall" }}
-						title="Go"
-						ariaLabel="Go"
-						onClick={() => onGO()}
-					/>
-				</div>
+		<div className="chrome-app-container">
+			{/* Browser Chrome */}
+			<div className="chrome-browser-bar">
+				<button className="chrome-nav-btn chrome-back" title="Back">◀</button>
+				<button className="chrome-nav-btn chrome-forward" title="Forward">▶</button>
+				<button className="chrome-nav-btn chrome-reload" title="Reload" onClick={() => seturl(url)}>↻</button>
+				<input
+					type="text"
+					className="chrome-address-bar"
+					placeholder="Type a URL"
+					value={urlToShow}
+					onChange={onURLChange}
+					onKeyDown={handleKeyDown}
+				/>
+				<button className="chrome-nav-btn" title="Go" onClick={onGO}>➜</button>
+				<button className="chrome-menu-btn" title="Menu">⋯</button>
 			</div>
-			<iframe
-				src={url}
-				frameBorder="0"
-				height="100%"
-				width="100%"
-				title="Chrome"
-			></iframe>
+
+			{/* Web Content */}
+			<div className="chrome-content" style={{ padding: 0, overflow: 'hidden' }}>
+				<iframe
+					src={url}
+					frameBorder="0"
+					height="100%"
+					width="100%"
+					title="Chrome"
+				></iframe>
+			</div>
 		</div>
 	);
 }
