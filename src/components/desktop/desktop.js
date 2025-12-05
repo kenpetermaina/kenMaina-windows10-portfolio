@@ -7,6 +7,7 @@ import AppIcon from "../base/appIcon";
 import CalendarOverlay from "../base/calendarOverlay";
 import StartMenu from "../startMenu/startMenu";
 import Taskbar from "../taskBar/taskBar";
+import KeyboardShortcuts from "../base/keyboardShortcuts";
 import "./desktop.scss";
 import Loading from "../loading/loading";
 
@@ -51,10 +52,14 @@ function Desktop() {
 		desktopApps !== null &&
 		desktopApps.length > 0
 	) {
-		return (
-			<div className="screenHeight uk-flex uk-flex-column">
-				<div className="desktop-container">
-					<ActionCenter />
+return (
+      <div className="screenHeight uk-flex uk-flex-column">
+        <KeyboardShortcuts />
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <div className="desktop-container" id="main-content">
+<ActionCenter />
 					<StartMenu />
 					<CalendarOverlay />
 					<div className="app-playground uk-position-right">

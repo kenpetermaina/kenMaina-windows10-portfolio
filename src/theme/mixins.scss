@@ -40,11 +40,11 @@
 
 /* ============ FOCUS RING MIXIN (WCAG COMPLIANT) ============ */
 @mixin focus-ring($color: var(--color-blue), $offset: 2px) {
-    &:focus-visible {
-        outline: 2px solid $color;
-        outline-offset: $offset;
-        box-shadow: 0 0 0 4px rgba(0, 162, 237, 0.15);
-    }
+    outline: 2px solid $color;
+    outline-offset: $offset;
+    box-shadow: 
+        0 0 0 4px rgba(0, 162, 237, 0.1),  // Outer glow for visibility
+        inset 0 0 0 1px rgba(0, 0, 0, 0.2); // Inner ring for definition
 }
 
 /* ============ RESPONSIVE FONT MIXIN ============ */
@@ -388,4 +388,26 @@
             transition-duration: 0.01ms !important;
         }
     }
+}
+
+/* ============ ERROR STATE MIXIN ============ */
+@mixin error-state() {
+  border-color: var(--color-alert);
+  background: rgba(255, 76, 76, 0.05);
+  box-shadow: 
+    0 0 0 1px var(--color-alert),
+    0 0 8px rgba(255, 76, 76, 0.15);
+}
+
+@mixin error-message() {
+  color: var(--color-alert);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  
+  &::before {
+    content: '⚠ ';
+  }
 }

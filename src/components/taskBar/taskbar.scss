@@ -84,6 +84,38 @@
     }
 }
 
+/* Enhanced Mobile Taskbar - Touch Friendly */
+@media screen and (max-width: 640px) {
+  .taskbar {
+    height: 52px;
+    padding: 4px 0;
+  }
+  
+  .taskbar-icon {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 10px;
+    margin: 0 2px;
+    border-radius: 6px;
+  }
+  
+  .icon-label {
+    display: none;
+  }
+  
+  .taskbar-icon:hover .icon-label,
+  .taskbar-icon:focus .icon-label {
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+}
+
 @media screen and (max-width: 640px) {
     .taskbar-bottom {
         height: 45px !important;

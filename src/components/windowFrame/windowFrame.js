@@ -10,7 +10,7 @@ export default function WindowFrame({ children, appInfo, onFunctionClick }) {
     const MIN_HEIGHT = 200;
     const RESIZE_BORDER = 6; // 6px Windows hot-zone
 
-    // Load initial state from localStorage
+    // Load initial state from localStorage with mobile centering
     const getInitialState = () => {
         const saved = localStorage.getItem(`windowState_${appInfo.id}`);
         if (saved) {
@@ -20,9 +20,28 @@ export default function WindowFrame({ children, appInfo, onFunctionClick }) {
                 console.error("Failed to parse window state", e);
             }
         }
+        
+        // Calculate dimensions
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const isMobile = windowWidth <= 640;
+        
+        // Set size (responsive)
+        const width = Math.min(windowWidth * 0.7, 90);
+        const height = Math.min(windowHeight * 0.7, 90);
+        
+        // Calculate position (centered on mobile, offset on desktop)
+        let posX = 80;
+        let posY = 80;
+        
+        if (isMobile) {
+            posX = Math.max(0, (windowWidth - width) / 2);
+            posY = Math.max(0, (windowHeight - height) / 2);
+        }
+        
         return {
-            size: { width: window.innerWidth * 0.7, height: window.innerHeight * 0.7 },
-            position: { x: 80, y: 80 }
+            size: { width, height },
+            position: { x: posX, y: posY }
         };
     };
 
@@ -267,25 +286,28 @@ export default function WindowFrame({ children, appInfo, onFunctionClick }) {
                 </div>
 
                 <div className="app-top-functions uk-flex">
-                    <IconButton
-                        iconProps={{ iconName: "ChromeMinimize" }}
-                        title="Minimize"
-                        ariaLabel="Minimize"
-                        onClick={() => onFunctionClick(appInfo, ACTION_TYPES.MINIMIZE)}
-                    />
-                    <IconButton
-                        iconProps={{ iconName: "ChromeRestore" }}
-                        title={appInfo.isMaximized ? "Restore" : "Maximize"}
-                        ariaLabel={appInfo.isMaximized ? "Restore" : "Maximize"}
-                        onClick={() => onFunctionClick(appInfo, ACTION_TYPES.MAXIMIZE)}
-                    />
-                    <IconButton
-                        iconProps={{ iconName: "ChromeClose" }}
-                        title="Close"
-                        ariaLabel="Close"
-                        className="close-button"
-                        onClick={() => onFunctionClick(appInfo, ACTION_TYPES.CLOSE)}
-                    />
+                <IconButton
+                    iconProps={{ iconName: "ChromeMinimize" }}
+                    title="Minimize (Alt+M)"
+                    ariaLabel="Minimize window"
+                    data-tooltip="Minimize - Keyboard: Alt+M"
+                    onClick={() => onFunctionClick(appInfo, ACTION_TYPES.MINIMIZE)}
+                />
+                <IconButton
+                    iconProps={{ iconName: "ChromeRestore" }}
+                    title={appInfo.isMaximized ? "Restore (Alt+R)" : "Maximize (Alt+X)"}
+                    ariaLabel={appInfo.isMaximized ? "Restore window" : "Maximize window"}
+                    data-tooltip={appInfo.isMaximized ? "Restore - Keyboard: Alt+R" : "Maximize - Keyboard: Alt+X"}
+                    onClick={() => onFunctionClick(appInfo, ACTION_TYPES.MAXIMIZE)}
+                />
+                <IconButton
+                    iconProps={{ iconName: "ChromeClose" }}
+                    title="Close (Alt+F4)"
+                    ariaLabel="Close window"
+                    data-tooltip="Close - Keyboard: Alt+F4"
+                    className="close-button"
+                    onClick={() => onFunctionClick(appInfo, ACTION_TYPES.CLOSE)}
+                />
                 </div>
             </div>
 
