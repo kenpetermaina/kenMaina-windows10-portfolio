@@ -11,11 +11,15 @@ import "uikit/dist/js/uikit-icons.min";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import * as serviceWorker from "./serviceWorker";
 import "react-resizable/css/styles.css";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 initializeIcons();
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<Provider store={store}>
+			<App />
+		</Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

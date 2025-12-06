@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import DesktopContainer from "./containers/desktop.container";
+import LockScreenContainer from "./containers/lockScreen.container";
+import { useSelector } from "react-redux";
 import { preloadImages } from "./utils/imageOptimization";
 
 // Critical images to preload (above-the-fold)
@@ -10,6 +12,8 @@ const CRITICAL_IMAGES = [
 ];
 
 function App() {
+  const systemState = useSelector((state) => state.systemState);
+
   // Preload critical images on app mount
   useEffect(() => {
     preloadImages(CRITICAL_IMAGES);
@@ -17,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <DesktopContainer />
+      {systemState.isLocked ? <LockScreenContainer /> : <DesktopContainer />}
     </div>
   );
 }
