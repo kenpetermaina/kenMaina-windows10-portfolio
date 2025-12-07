@@ -80,14 +80,15 @@ function AppComponent(props) {
 										>
 											<a
 												className="uk-link-reset"
-												onClick={() =>
-													setComponent(component.name, index)
-												}
-												href={() => false}
+												onClick={(e) => {
+													e.preventDefault();
+													setComponent(component.name, index);
+												}}
+												href="#"
 											>
-												<li className="sidebar-list-item uk-margin-remove">
+												<span className="sidebar-list-item uk-margin-remove">
 													{component.name}
-												</li>
+												</span>
 											</a>
 										</li>
 									);
@@ -177,17 +178,18 @@ function AppComponent(props) {
 												>
 													<a
 														className="uk-link-reset"
-														onClick={() =>
+														onClick={(e) => {
+															e.preventDefault();
 															setComponent(
 																component.name,
 																index
-															)
-														}
-														href={() => false}
+															);
+														}}
+														href="#"
 													>
-														<li className="sidebar-list-item uk-margin-remove">
+														<span className="sidebar-list-item uk-margin-remove">
 															{component.name}
-														</li>
+														</span>
 													</a>
 												</li>
 											);

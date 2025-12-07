@@ -8,17 +8,15 @@ function Education() {
 				<div className="container uk-margin-medium-left">
 					{user.education.map((education, index) => {
 						return (
-							<div className="timeline-block " key={index}>
+							<div className="timeline-block" key={index}>
 								<div className="marker"></div>
 								<div className="timeline-content">
 									<p className="uk-text-lead font-color-white">
 										{education.instituteName}
 									</p>
 									<span>{education.year}</span>
-									<p className="positon-desc">
-										<p className="positon-desc">
-											{education.degree}
-										</p>
+									<p className="position-desc">
+										{education.degree}
 									</p>
 								</div>
 							</div>
