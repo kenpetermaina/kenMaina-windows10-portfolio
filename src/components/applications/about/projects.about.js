@@ -19,21 +19,23 @@ function Projects() {
 								<div className="uk-card-header uk-padding-remove-horizontal">
 									<h3 className="uk-card-title font-color-white uk-margin-remove-bottom">
 										{project.projectName}
-										<TooltipHost
-											content="View Project"
-											delay={TooltipDelay.zero}
-											directionalHint={DirectionalHint.bottomCenter}
-										>
-											<IconButton
-												iconProps={{
-													iconName: "NavigateExternalInline",
-												}}
-												className="link-to-project"
-												target="_blank"
-												href={project.link || "#"}
-												onClick={() => window.open(project.link, "_blank")}
-											/>
-										</TooltipHost>
+										{project.link && (
+											<TooltipHost
+												content="View Project"
+												delay={TooltipDelay.zero}
+												directionalHint={DirectionalHint.bottomCenter}
+											>
+												<IconButton
+													iconProps={{
+														iconName: "NavigateExternalInline",
+													}}
+													className="link-to-project"
+													target="_blank"
+													href={project.link}
+													onClick={() => window.open(project.link, "_blank")}
+												/>
+											</TooltipHost>
+										)}
 									</h3>
 								</div>
 								<div className="uk-card-body uk-padding-remove-horizontal uk-flex-1">

@@ -16,6 +16,22 @@ import store from "./utils/store";
 
 initializeIcons();
 
+// Suppress benign ResizeObserver error
+const resizeObserverLoopErr = /ResizeObserver loop completed with undelivered notifications/;
+const originalError = console.error;
+console.error = (...args) => {
+	if (args[0] && resizeObserverLoopErr.test(args[0])) {
+		return;
+	}
+	originalError.call(console, ...args);
+};
+
+window.addEventListener('error', (e) => {
+	if (resizeObserverLoopErr.test(e.message)) {
+		e.stopImmediatePropagation();
+	}
+});
+
 const container = document.getElementById("root");
 const root = createRoot(container);
 
