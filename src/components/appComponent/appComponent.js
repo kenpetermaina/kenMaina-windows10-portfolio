@@ -1,9 +1,10 @@
 import { IconButton, TextField } from "@fluentui/react";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Suspense } from "react";
 import "./appComponent.scss";
 import { useDispatch } from "react-redux";
 import { handleAppFunctions } from "../../utils/actions/app.action";
 import WindowFrame from "../windowFrame/windowFrame";
+import AppRegistry from "../base/AppRegistry";
 
 function AppComponent(props) {
 	const dispatch = useDispatch();
@@ -212,7 +213,13 @@ function AppComponent(props) {
 											key={index}
 										>
 											<React.Fragment>
-												<component.component></component.component>
+												<Suspense fallback={<div className="uk-position-center">Loading...</div>}>
+													{AppRegistry[component.component] ? (
+														React.createElement(AppRegistry[component.component])
+													) : (
+														<div>Component not found</div>
+													)}
+												</Suspense>
 											</React.Fragment>
 										</li>
 									);

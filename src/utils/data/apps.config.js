@@ -1,16 +1,3 @@
-import AboutMe from "../../components/applications/about/aboutMe.about";
-import ContactMe from "../../components/applications/about/contactMe.about";
-import Education from "../../components/applications/about/education.about";
-import Experience from "../../components/applications/about/experience.about";
-import Projects from "../../components/applications/about/projects.about";
-import Resume from "../../components/applications/about/resume.about";
-import Skills from "../../components/applications/about/skills.about";
-import Chrome from "../../components/applications/chrome.application";
-import JIOSaavn from "../../components/applications/jiosaavn.application";
-import Mail from "../../components/applications/mail.application";
-import SpreadsheetApp from "../../components/applications/spreadsheet.application";
-import VSCode from "../../components/applications/vscode.application";
-import Word from "../../components/applications/document.application";
 import aboutMe from "../../assets/images/apps/aboutMe.png";
 import chrome from "../../assets/images/apps/chrome.svg";
 import jioSaavn from "../../assets/images/apps/jioSaavn.png";
@@ -19,7 +6,6 @@ import word from "../../assets/images/apps/word.svg";
 import spreadsheet from "../../assets/images/apps/spreadsheet.svg";
 import vsCode from "../../assets/images/apps/vsCode.png";
 import settings from "../../assets/images/apps/settings.svg";
-import BackgroundSettings from "../../components/applications/settings/background.settings";
 
 const appConfig = [
 	{
@@ -33,31 +19,31 @@ const appConfig = [
 		subComponent: [
 			{
 				name: "About Me",
-				component: AboutMe,
+				component: "AboutMe",
 			},
 			{
 				name: "Experience",
-				component: Experience,
+				component: "Experience",
 			},
 			{
 				name: "Education",
-				component: Education,
+				component: "Education",
 			},
 			{
 				name: "Projects",
-				component: Projects,
+				component: "Projects",
 			},
 			{
 				name: "Skills",
-				component: Skills,
+				component: "Skills",
 			},
 			{
 				name: "Resume",
-				component: Resume,
+				component: "Resume",
 			},
 			{
 				name: "Contact Me",
-				component: ContactMe,
+				component: "ContactMe",
 			},
 		],
 	},
@@ -72,7 +58,7 @@ const appConfig = [
 		subComponent: [
 			{
 				name: "VSCode",
-				component: VSCode,
+				component: "VSCode",
 			},
 		],
 	},
@@ -87,7 +73,7 @@ const appConfig = [
 		subComponent: [
 			{
 				name: "jioSaavn",
-				component: JIOSaavn,
+				component: "JIOSaavn",
 			},
 		],
 	},
@@ -102,7 +88,7 @@ const appConfig = [
 		subComponent: [
 			{
 				name: "mail",
-				component: Mail,
+				component: "Mail",
 			},
 		],
 	},
@@ -117,7 +103,7 @@ const appConfig = [
 		subComponent: [
 			{
 				name: "chrome",
-				component: Chrome,
+				component: "Chrome",
 			},
 		],
 	},
@@ -132,7 +118,7 @@ const appConfig = [
 		subComponent: [
 			{
 				name: "word",
-				component: Word,
+				component: "Word",
 			},
 		],
 	},
@@ -147,7 +133,7 @@ const appConfig = [
 		subComponent: [
 			{
 				name: "spreedsheet",
-				component: SpreadsheetApp,
+				component: "Spreadsheet",
 			},
 		],
 	},
@@ -162,7 +148,7 @@ const appConfig = [
 		subComponent: [
 			{
 				name: "Background",
-				component: BackgroundSettings,
+				component: "BackgroundSettings",
 			},
 		],
 	},
