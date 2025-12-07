@@ -32,25 +32,25 @@ function DesktopContextMenu(props) {
 						)
 					}
 				>
-<LazyImage
-src={star}
-width="30"
-height="30"
-className="uk-margin-small-right"
-alt="Star"
-/>
+					<LazyImage
+						src={star}
+						width="30"
+						height="30"
+						className="uk-margin-small-right"
+						alt="Star"
+					/>
 					Star This Project
 				</Item>
 				<Separator />
 				{props.location === SCREENS.DESKTOP && (
 					<Item onClick={handleRefresh}>
-<LazyImage
-src={refresh}
-width="30"
-height="30"
-className="uk-margin-small-right"
-alt="Refresh"
-/>
+						<LazyImage
+							src={refresh}
+							width="30"
+							height="30"
+							className="uk-margin-small-right"
+							alt="Refresh"
+						/>
 						Refresh
 					</Item>
 				)}
@@ -62,13 +62,13 @@ alt="Refresh"
 						)
 					}
 				>
-<LazyImage
-src={source_code}
-width="30"
-height="30"
-className="uk-margin-small-right"
-alt="Code"
-/>
+					<LazyImage
+						src={source_code}
+						width="30"
+						height="30"
+						className="uk-margin-small-right"
+						alt="Code"
+					/>
 					View Source Code
 				</Item>
 				<Separator />
@@ -77,13 +77,13 @@ alt="Code"
 						navigate("https://github.com/arnoldadero")
 					}
 				>
-<LazyImage
-src={github}
-width="30"
-height="30"
-className="uk-margin-small-right"
-alt="Github"
-/>
+					<LazyImage
+						src={github}
+						width="30"
+						height="30"
+						className="uk-margin-small-right"
+						alt="Github"
+					/>
 					Github Profile
 				</Item>
 				<Separator />
@@ -92,24 +92,24 @@ alt="Github"
 						navigate("mailto:arnold@mvuvi.co.ke")
 					}
 				>
-<LazyImage
-src={contact_me}
-width="30"
-height="30"
-className="uk-margin-small-right"
-alt="mail"
-/>
+					<LazyImage
+						src={contact_me}
+						width="30"
+						height="30"
+						className="uk-margin-small-right"
+						alt="mail"
+					/>
 					Contact Me
 				</Item>
 				<Separator />
 				<Item onClick={showModal}>
-<LazyImage
-src={credits}
-width="30"
-height="30"
-className="uk-margin-small-right"
-alt="Credits"
-/>
+					<LazyImage
+						src={credits}
+						width="30"
+						height="30"
+						className="uk-margin-small-right"
+						alt="Credits"
+					/>
 					Credits
 				</Item>
 				<Separator />
