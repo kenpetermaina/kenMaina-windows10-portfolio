@@ -6,3 +6,64 @@
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
 }
+
+// Synchronized bouncing animation for social icons
+@keyframes socialBounce {
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	25% {
+		transform: translateY(-12px);
+	}
+
+	50% {
+		transform: translateY(0);
+	}
+
+	75% {
+		transform: translateY(-6px);
+	}
+}
+
+.SignInOverlay {
+	.social-block {
+		display: flex;
+		align-items: center;
+
+		img {
+			animation: socialBounce 2s ease-in-out infinite;
+			transition: transform 0.3s ease, filter 0.3s ease;
+			cursor: pointer;
+
+			// Staggered animation delay for wave effect
+			&:nth-child(1) {
+				animation-delay: 0s;
+			}
+
+			&:nth-child(2) {
+				animation-delay: 0.15s;
+			}
+
+			&:nth-child(3) {
+				animation-delay: 0.3s;
+			}
+
+			&:nth-child(4) {
+				animation-delay: 0.45s;
+			}
+
+			&:nth-child(5) {
+				animation-delay: 0.6s;
+			}
+
+			&:hover {
+				animation-play-state: paused;
+				transform: translateY(-8px) scale(1.1);
+				filter: brightness(1.2) drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3));
+			}
+		}
+	}
+}

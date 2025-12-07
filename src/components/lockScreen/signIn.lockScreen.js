@@ -18,13 +18,13 @@ function SignInScreen() {
 			{/* Sign In Form */}
 			<div className="uk-position-center uk-overlay uk-text-center">
 				<div>
-<LazyImage
-className="uk-border-circle"
-src={avatar}
-width="200"
-height="200"
-alt="User"
-/>
+					<LazyImage
+						className="uk-border-circle"
+						src={avatar}
+						width="200"
+						height="200"
+						alt="User"
+					/>
 				</div>
 				<div>
 					<h1 className="uk-heading-small  font-color-white">
@@ -33,10 +33,14 @@ alt="User"
 				</div>
 				<div>
 					<TextField
-						placeholder="Click Signin To Enter"
+						placeholder="Click 'Sign In' To Enter"
 						type="password"
 						canRevealPassword
 						revealPasswordAriaLabel="Show password"
+						styles={{
+							field: { textAlign: 'center' },
+							fieldGroup: { textAlign: 'center' }
+						}}
 					/>
 				</div>
 				<div className="uk-margin-small-top">

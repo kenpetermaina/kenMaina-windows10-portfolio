@@ -19,6 +19,8 @@ const LazyImage = ({
   sizes = null,
   srcSet = null,
   lowQualitySrc = null, // For blur-up effect
+  onClick = null,
+  ...restProps // Spread remaining props to img element
 }) => {
   const [imageSrc, setImageSrc] = useState(lowQualitySrc || placeholder);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -79,6 +81,8 @@ const LazyImage = ({
       sizes={sizes}
       srcSet={srcSet}
       loading="lazy"
+      onClick={onClick}
+      {...restProps}
     />
   );
 };
