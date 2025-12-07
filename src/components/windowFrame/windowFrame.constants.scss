@@ -19,3 +19,13 @@ $window-border-radius-mobile: 0px;
 $window-control-btn-width-desktop: 42px;
 $window-control-btn-width-tablet: 38px;
 $window-control-btn-width-mobile: 32px;
+
+// Snap zones
+$snap-edge-threshold: 20px;
+$snap-preview-opacity: 0.4;
+
+// Mobile touch targets
+$window-control-btn-touch-size: 44px;
+
+// Taskbar height for mobile calculations
+$taskbar-height-mobile: 48px;

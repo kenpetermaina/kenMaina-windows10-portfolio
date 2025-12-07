@@ -2,7 +2,7 @@ import React from "react";
 import "./lockScreen.scss";
 import { setSystemState } from "../../utils/actions/system.action";
 import { useDispatch } from "react-redux";
-import avatar from "../../assets/images/baseImages/default_avatar.svg";
+import avatar from "../../assets/images/baseImages/profile.png";
 import { Icon, PrimaryButton, TextField } from "@fluentui/react";
 import SocialBlock from "../base/socialBlock";
 import LazyImage from "../base/lazyImage";
@@ -16,13 +16,11 @@ function SignInScreen() {
 	return (
 		<div className="screenHeight SignInOverlay">
 			{/* Sign In Form */}
-			<div className="uk-position-center uk-overlay uk-text-center">
-				<div>
+			<div className="sign-in-content">
+				<div className="avatar-container">
 					<LazyImage
-						className="uk-border-circle"
+						className="uk-border-circle avatar-image"
 						src={avatar}
-						width="200"
-						height="200"
 						alt="User"
 					/>
 				</div>
