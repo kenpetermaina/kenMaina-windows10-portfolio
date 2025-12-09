@@ -22,9 +22,33 @@ function StartMenu() {
 
 	const dispatch = useDispatch();
 
-	// Close Start Menu with animation
-	const closeStartMenu = () => {
+	// Close Start Menu immediately (hide first, then clean up)
+	const closeStartMenu = (immediate = false) => {
 		const startMenuEl = document.getElementById('start-menu');
+
+		if (immediate && startMenuEl) {
+			// AGGRESSIVE CLOSE: Immediately hide without waiting for animation or UIkit state
+
+			// 1. Try UIkit API
+			if (window.UIkit && window.UIkit.offcanvas) {
+				window.UIkit.offcanvas(startMenuEl).hide();
+			}
+
+			// 2. Force remove specific classes that keep it open
+			startMenuEl.classList.remove('uk-open');
+			startMenuEl.classList.remove('closing');
+
+			// 3. Remove global overlay if present (common UIkit issue)
+			const overlay = document.querySelector('.uk-offcanvas-overlay');
+			if (overlay) {
+				overlay.classList.remove('uk-open');
+				setTimeout(() => overlay.remove(), 50);
+			}
+
+			return; // Skip animation logic
+		}
+
+		// Standard close with animation
 		if (startMenuEl && startMenuEl.classList.contains('uk-open')) {
 			// Add closing class for animation
 			startMenuEl.classList.add('closing');
@@ -40,9 +64,9 @@ function StartMenu() {
 	};
 
 	const handleIconClick = (app) => {
-		// Close Start Menu first (with animation)
-		closeStartMenu();
-		// Then dispatch the app click action
+		// Close Start Menu immediately (no animation delay)
+		closeStartMenu(true);
+		// Dispatch the app click action to open/focus the app
 		dispatch(handleApplicationClick(app));
 	};
 	const setNextSystemState = (systemState) => {
@@ -100,9 +124,9 @@ function StartMenu() {
 		}
 	};
 
-	// Handle tile click with Start Menu close
+	// Handle tile click with immediate Start Menu close
 	const handleTileClick = (app) => {
-		closeStartMenu();
+		closeStartMenu(true);
 		dispatch(handleApplicationClick(app));
 	};
 
