@@ -16,6 +16,7 @@ const appConfig = [
 		showInDesktop: true,
 		isApplication: false,
 		showLinks: true,
+		isPinned: true,
 		subComponent: [
 			{
 				name: "About Me",
@@ -54,6 +55,7 @@ const appConfig = [
 		icon: vsCode,
 		isApplication: true,
 		showInDesktop: true,
+		isPinned: true,
 		showLinks: false,
 		subComponent: [
 			{
@@ -69,6 +71,7 @@ const appConfig = [
 		icon: jioSaavn,
 		isApplication: true,
 		showInDesktop: true,
+		isPinned: true,
 		showLinks: false,
 		subComponent: [
 			{
@@ -84,6 +87,7 @@ const appConfig = [
 		icon: mail,
 		isApplication: true,
 		showInDesktop: true,
+		isPinned: true,
 		showLinks: false,
 		subComponent: [
 			{
@@ -99,6 +103,7 @@ const appConfig = [
 		icon: chrome,
 		isApplication: true,
 		showInDesktop: true,
+		isPinned: true,
 		showLinks: false,
 		subComponent: [
 			{
@@ -114,6 +119,7 @@ const appConfig = [
 		icon: word,
 		isApplication: true,
 		showInDesktop: true,
+		isPinned: false,
 		showLinks: false,
 		subComponent: [
 			{
@@ -129,6 +135,7 @@ const appConfig = [
 		icon: spreadsheet,
 		isApplication: true,
 		showInDesktop: true,
+		isPinned: false,
 		showLinks: false,
 		subComponent: [
 			{
@@ -144,6 +151,7 @@ const appConfig = [
 		icon: settings,
 		showInDesktop: false,
 		isApplication: false,
+		isPinned: false,
 		showLinks: false,
 		subComponent: [
 			{

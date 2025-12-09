@@ -8,7 +8,6 @@ import { setSystemState } from "../../utils/actions/system.action";
 import { handleApplicationClick } from "../../utils/actions/app.action";
 import user from "../../utils/data/user.config";
 import SocialBlock from "../base/socialBlock";
-import AppIcon from "../base/appIcon";
 import { analytics } from "../../utils/firebaseConfig";
 import { logEvent } from "firebase/analytics";
 import { ANALYTICS_EVENTS } from "../../utils/documents/enums";
@@ -89,15 +88,34 @@ function StartMenu() {
 		],
 	});
 
+	// Filter apps into pinned and all apps
+	const pinnedApps = appState.apps.filter(app => app.isPinned);
+	const allApps = appState.apps;
+
+	// Handle keyboard navigation for list items
+	const handleKeyDown = (e, app) => {
+		if (e.key === "Enter" || e.key === " ") {
+			e.preventDefault();
+			handleIconClick(app);
+		}
+	};
+
+	// Handle tile click with Start Menu close
+	const handleTileClick = (app) => {
+		closeStartMenu();
+		dispatch(handleApplicationClick(app));
+	};
+
 	return (
 		<div id="start-menu" uk-offcanvas="overlay: false">
 			<div className="uk-offcanvas-bar start-menu uk-flex uk-padding-remove">
+				{/* Quick Actions Sidebar */}
 				<div className="start-quick-actions">
 					<IconButton
 						iconProps={{ iconName: "PowerButton" }}
 						title="Power"
 						ariaLabel="Power"
-						className=" quick-action-button uk-position-bottom"
+						className="quick-action-button uk-position-bottom"
 						menuProps={menuProps}
 					/>
 					{showPowerMenu && (
@@ -107,53 +125,92 @@ function StartMenu() {
 						/>
 					)}
 				</div>
-				<div className="start-app-list uk-margin-medium-top uk-margin-small-right ">
+
+				{/* All Apps List Section */}
+				<div className="start-app-list">
+					<h4 className="section-title">All Apps</h4>
 					<ul className="uk-list start-menu-list">
-						{appState.apps.map((app, index) => {
+						{allApps.map((app, index) => {
 							return (
 								<li
-									className="start-menu-list-item uk-border-rounded"
+									className="start-menu-list-item"
 									onClick={() => handleIconClick(app)}
-									key={index}
+									onKeyDown={(e) => handleKeyDown(e, app)}
+									key={app.id || index}
+									role="button"
+									tabIndex={0}
+									aria-label={`Open ${app.name}`}
 								>
 									{app.icon !== undefined &&
 										app.icon !== null &&
 										app.icon !== "" && (
 											<LazyImage
 												src={app.icon}
-												width="25"
-												height="25"
+												width="32"
+												height="32"
 												alt={app.name}
-												className="uk-img uk-margin-small-right"
+												className="uk-img list-item-icon"
 											/>
 										)}
-									{app.name}
+									<span className="list-item-name">{app.name}</span>
 								</li>
 							);
 						})}
 					</ul>
 				</div>
-				<div className="start-tiles uk-background-secondary">
-					<div className="profile-card uk-card uk-card-body uk-margin-medium-top uk-margin-medium-left uk-margin-medium-right uk-border-rounded uk-text-center">
+
+				{/* Pinned Tiles Section */}
+				<div className="start-tiles">
+					{/* Profile Card */}
+					<div className="profile-card">
 						{user.userImage !== undefined &&
 							user.userImage !== null &&
 							user.userImage !== "" && (
 								<LazyImage
 									src={user.userImage}
-									width="80"
-									height="80"
+									width="70"
+									height="70"
 									alt={user.firstName}
 									className="uk-img profile-card-img"
 								/>
 							)}
-						<p className="uk-text-center">Hi, {user.firstName}</p>
+						<p className="profile-greeting">Hi, {user.firstName}</p>
 						<SocialBlock />
 					</div>
-					<div className="start-menu-tiles uk-child-width-1-3">
-						{appState.apps.map((app, index) => {
-							return <AppIcon appInfo={app} key={index} />;
-						})}
-					</div>
+
+					{/* Pinned Apps Section */}
+					{pinnedApps.length > 0 && (
+						<div className="pinned-section">
+							<h4 className="section-title">Pinned</h4>
+							<div className="start-menu-tiles">
+								{pinnedApps.map((app, index) => (
+									<div
+										className="app-tile"
+										key={app.id || index}
+										onClick={() => handleTileClick(app)}
+										onKeyDown={(e) => {
+											if (e.key === "Enter" || e.key === " ") {
+												e.preventDefault();
+												handleTileClick(app);
+											}
+										}}
+										role="button"
+										tabIndex={0}
+										aria-label={`Open ${app.name}`}
+									>
+										<LazyImage
+											src={app.icon}
+											width="40"
+											height="40"
+											alt={app.name}
+											className="tile-icon"
+										/>
+										<span className="tile-name">{app.name}</span>
+									</div>
+								))}
+							</div>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

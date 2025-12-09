@@ -97,4 +97,14 @@
 	/* ===== WINDOW SNAP COLORS ===== */
 	--snap-preview-bg: rgba(0, 162, 237, 0.25);
 	--snap-preview-border: rgba(0, 162, 237, 0.5);
+
+	/* ===== FLUENT ACCENT COLORS ===== */
+	--accent-color: #0078d4;
+	--accent-light: rgba(0, 120, 212, 0.15);
+	--accent-hover: rgba(0, 120, 212, 0.25);
+
+	/* ===== CARD STYLING ===== */
+	--card-bg: rgba(255, 255, 255, 0.04);
+	--card-bg-hover: rgba(255, 255, 255, 0.08);
+	--card-border-radius: 10px;
 }
