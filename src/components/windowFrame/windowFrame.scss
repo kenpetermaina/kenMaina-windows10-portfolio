@@ -63,20 +63,95 @@
         z-index: 100;
     }
 
-    /* Window Launch Animation */
+    /* Window Launch Animation - Enhanced */
     &.launching {
-        animation: windowLaunch 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+        animation: windowLaunch 0.3s cubic-bezier(0.33, 1, 0.68, 1) forwards;
     }
 
     @keyframes windowLaunch {
         from {
             opacity: 0;
-            transform: scale(0.92) translateY(10px);
+            transform: scale(0.88) translateY(20px);
+            box-shadow:
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.04);
         }
 
         to {
             opacity: 1;
             transform: scale(1) translateY(0);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+    }
+
+    /* Window Close Animation */
+    &.closing {
+        animation: windowClose 0.2s ease-out forwards;
+        pointer-events: none;
+    }
+
+    @keyframes windowClose {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        to {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+    }
+
+    /* Window Minimize Animation - Shrinks toward taskbar */
+    &.minimizing {
+        animation: windowMinimize 0.25s ease-in forwards;
+        pointer-events: none;
+    }
+
+    @keyframes windowMinimize {
+        from {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: scale(0.4) translateY(100vh);
+        }
+    }
+
+    /* Window Restore Animation - Grows from taskbar */
+    &.restoring {
+        animation: windowRestore 0.28s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+    }
+
+    @keyframes windowRestore {
+        from {
+            opacity: 0;
+            transform: scale(0.4) translateY(100vh);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    /* Window Maximize Animation */
+    &.maximizing {
+        animation: windowMaximize 0.2s ease-out forwards;
+    }
+
+    @keyframes windowMaximize {
+        from {
+            border-radius: 8px;
+        }
+
+        to {
+            border-radius: 0;
         }
     }
 

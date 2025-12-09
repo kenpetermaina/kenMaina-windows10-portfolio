@@ -22,7 +22,28 @@ function StartMenu() {
 	] = useBoolean(false);
 
 	const dispatch = useDispatch();
+
+	// Close Start Menu with animation
+	const closeStartMenu = () => {
+		const startMenuEl = document.getElementById('start-menu');
+		if (startMenuEl && startMenuEl.classList.contains('uk-open')) {
+			// Add closing class for animation
+			startMenuEl.classList.add('closing');
+			// Wait for animation to complete, then close
+			setTimeout(() => {
+				startMenuEl.classList.remove('closing');
+				// Use UIkit API to close
+				if (window.UIkit && window.UIkit.offcanvas) {
+					window.UIkit.offcanvas(startMenuEl).hide();
+				}
+			}, 200); // Match animation duration
+		}
+	};
+
 	const handleIconClick = (app) => {
+		// Close Start Menu first (with animation)
+		closeStartMenu();
+		// Then dispatch the app click action
 		dispatch(handleApplicationClick(app));
 	};
 	const setNextSystemState = (systemState) => {
@@ -95,17 +116,17 @@ function StartMenu() {
 									onClick={() => handleIconClick(app)}
 									key={index}
 								>
-{app.icon !== undefined &&
-app.icon !== null &&
-app.icon !== "" && (
-<LazyImage
-src={app.icon}
-width="25"
-height="25"
-alt={app.name}
-className="uk-img uk-margin-small-right"
-/>
-)}
+									{app.icon !== undefined &&
+										app.icon !== null &&
+										app.icon !== "" && (
+											<LazyImage
+												src={app.icon}
+												width="25"
+												height="25"
+												alt={app.name}
+												className="uk-img uk-margin-small-right"
+											/>
+										)}
 									{app.name}
 								</li>
 							);
@@ -114,17 +135,17 @@ className="uk-img uk-margin-small-right"
 				</div>
 				<div className="start-tiles uk-background-secondary">
 					<div className="profile-card uk-card uk-card-body uk-margin-medium-top uk-margin-medium-left uk-margin-medium-right uk-border-rounded uk-text-center">
-{user.userImage !== undefined &&
-user.userImage !== null &&
-user.userImage !== "" && (
-<LazyImage
-src={user.userImage}
-width="80"
-height="80"
-alt={user.firstName}
-className="uk-img profile-card-img"
-/>
-)}
+						{user.userImage !== undefined &&
+							user.userImage !== null &&
+							user.userImage !== "" && (
+								<LazyImage
+									src={user.userImage}
+									width="80"
+									height="80"
+									alt={user.firstName}
+									className="uk-img profile-card-img"
+								/>
+							)}
 						<p className="uk-text-center">Hi, {user.firstName}</p>
 						<SocialBlock />
 					</div>

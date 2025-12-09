@@ -1,14 +1,70 @@
 @import "../../theme/variables";
 
+/* ===== START MENU ANIMATIONS ===== */
+/* Override UIkit's default offcanvas animations */
+
+@keyframes startMenuSlideUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px) scale(0.98);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes startMenuSlideDown {
+	from {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(30px) scale(0.98);
+	}
+}
+
+/* Override UIkit offcanvas reveal animation */
+#start-menu {
+	/* Disable UIkit's default transition */
+	transition: none !important;
+
+	&.uk-offcanvas {
+
+		/* Override default offcanvas behavior */
+		.uk-offcanvas-bar {
+			transition: none !important;
+		}
+	}
+
+	/* When opened (uk-open class added by UIkit) */
+	&.uk-open .start-menu {
+		animation: startMenuSlideUp 0.25s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+	}
+
+	/* Closing state - applied via JS before closing */
+	&.closing .start-menu {
+		animation: startMenuSlideDown 0.2s ease-in forwards;
+	}
+}
+
 .start-menu {
 	height: 80% !important;
 	width: 50vw !important;
 	top: calc(20% - 40px) !important;
-	background: rgba(28, 28, 30, 0.85) !important;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
-	backdrop-filter: blur(20px) !important;
-	-webkit-backdrop-filter: blur(20px) !important;
+	background: rgba(28, 28, 30, 0.92) !important;
+	box-shadow:
+		0 8px 32px 0 rgba(31, 38, 135, 0.37),
+		0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+	backdrop-filter: blur(24px) saturate(180%) !important;
+	-webkit-backdrop-filter: blur(24px) saturate(180%) !important;
 	border-radius: 10px !important;
+	/* Start hidden, animation will reveal */
+	opacity: 0;
+	transform: translateY(30px) scale(0.98);
 }
 
 .start-quick-actions {

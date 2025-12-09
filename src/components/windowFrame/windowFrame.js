@@ -71,6 +71,36 @@ export default function WindowFrame({ children, appInfo, onFunctionClick }) {
     const [snapPreview, setSnapPreview] = useState(null); // 'left', 'right', 'maximize', null
     const [preSnapState, setPreSnapState] = useState(null); // Store state before snap
 
+    // Animation state tracking
+    const [animationClass, setAnimationClass] = useState('launching');
+    const prevMinimizedRef = useRef(appInfo.isMinimized);
+    const isFirstRender = useRef(true);
+
+    // Track minimize/restore state changes for animations
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+
+        const wasMinimized = prevMinimizedRef.current;
+        const isNowMinimized = appInfo.isMinimized;
+
+        if (wasMinimized !== isNowMinimized) {
+            if (isNowMinimized) {
+                // Minimizing - will be hidden by parent after animation
+                setAnimationClass('minimizing');
+            } else {
+                // Restoring from minimized
+                setAnimationClass('restoring');
+                // Clear animation class after it completes
+                setTimeout(() => setAnimationClass(''), 280);
+            }
+        }
+
+        prevMinimizedRef.current = isNowMinimized;
+    }, [appInfo.isMinimized]);
+
     // --------------------------------------------------------
     // Viewport resize handler for mobile detection
     // --------------------------------------------------------
@@ -400,14 +430,13 @@ export default function WindowFrame({ children, appInfo, onFunctionClick }) {
         };
     }, [handleWindowMouseMove, stopResize, dragMove, stopDrag]);
 
-    // Re-trigger animation on launch
+    // Clear launching animation after it completes
     useEffect(() => {
-        if (frameRef.current) {
-            frameRef.current.classList.remove('launching');
-            void frameRef.current.offsetWidth;
-            frameRef.current.classList.add('launching');
+        if (animationClass === 'launching') {
+            const timer = setTimeout(() => setAnimationClass(''), 300);
+            return () => clearTimeout(timer);
         }
-    }, [appInfo.id, appInfo.isMaximized]);
+    }, [animationClass]);
 
     // Determine container style
     const getContainerStyle = () => {
@@ -472,7 +501,7 @@ export default function WindowFrame({ children, appInfo, onFunctionClick }) {
         appInfo.isMaximized && 'maximized',
         isMobile && 'mobile',
         snapPosition && `snapped-${snapPosition}`,
-        'launching'
+        animationClass
     ].filter(Boolean).join(' ');
 
     return (

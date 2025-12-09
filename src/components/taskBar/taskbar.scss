@@ -45,6 +45,34 @@
     height: 90% !important;
     border-bottom: 3px solid var(--color-blue) !important;
     background: rgba(0, 162, 237, 0.15) !important;
+    transition: all 0.2s ease;
+
+    /* Entry animation when app opens */
+    animation: taskbarIconEnter 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+
+    /* Minimized state - dimmer indicator */
+    &:not(.onDesktop) {
+        border-bottom-color: rgba(0, 162, 237, 0.5) !important;
+        background: rgba(0, 162, 237, 0.08) !important;
+    }
+
+    /* Active (visible on desktop) - brighter glow */
+    &.onDesktop {
+        background: rgba(0, 162, 237, 0.2) !important;
+        box-shadow: 0 -2px 12px rgba(0, 162, 237, 0.3);
+    }
+}
+
+@keyframes taskbarIconEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 .taskbar-quick-icon:focus-visible {
@@ -86,34 +114,34 @@
 
 /* Enhanced Mobile Taskbar - Touch Friendly */
 @media screen and (max-width: 640px) {
-  .taskbar {
-    height: 52px;
-    padding: 4px 0;
-  }
-  
-  .taskbar-icon {
-    min-width: 44px;
-    min-height: 44px;
-    padding: 8px 10px;
-    margin: 0 2px;
-    border-radius: 6px;
-  }
-  
-  .icon-label {
-    display: none;
-  }
-  
-  .taskbar-icon:hover .icon-label,
-  .taskbar-icon:focus .icon-label {
-    display: block;
-    position: absolute;
-    bottom: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 4px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-    font-size: 11px;
-  }
+    .taskbar {
+        height: 52px;
+        padding: 4px 0;
+    }
+
+    .taskbar-icon {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 8px 10px;
+        margin: 0 2px;
+        border-radius: 6px;
+    }
+
+    .icon-label {
+        display: none;
+    }
+
+    .taskbar-icon:hover .icon-label,
+    .taskbar-icon:focus .icon-label {
+        display: block;
+        position: absolute;
+        bottom: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 4px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+        font-size: 11px;
+    }
 }
 
 @media screen and (max-width: 640px) {
