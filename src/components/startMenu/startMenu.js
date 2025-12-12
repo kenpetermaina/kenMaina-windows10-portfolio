@@ -189,7 +189,22 @@ function StartMenu() {
 					<div className="profile-card">
 						<div className="profile-card-inner">
 							{/* Avatar with glow ring */}
-							<div className="profile-avatar-container">
+							<div
+								className="profile-avatar-container"
+								onClick={() => {
+									const aboutApp = allApps.find(app => app.id === "aboutMe");
+									if (aboutApp) handleIconClick(aboutApp);
+								}}
+								style={{ cursor: 'pointer' }}
+								role="button"
+								tabIndex={0}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter' || e.key === ' ') {
+										const aboutApp = allApps.find(app => app.id === "aboutMe");
+										if (aboutApp) handleIconClick(aboutApp);
+									}
+								}}
+							>
 								{user.userImage !== undefined &&
 									user.userImage !== null &&
 									user.userImage !== "" && (
