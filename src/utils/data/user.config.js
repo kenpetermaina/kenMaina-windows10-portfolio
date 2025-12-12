@@ -1,7 +1,7 @@
 import ResumePDF from "./ARNOLD ADERO's Resume.pdf";
-import user_avatar from "../../assets/images/baseImages/profile.png";
+import user_avatar from "../../assets/images/baseImages/profile.webp";
 
-import coldStorageGif from "../../assets/images/projects/coldstorage.gif";
+import coldStorageGif from "../../assets/images/projects/coldstorage.webp";
 
 const user = {
 	firstName: "Arnold",

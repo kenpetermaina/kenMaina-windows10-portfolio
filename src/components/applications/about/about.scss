@@ -214,6 +214,19 @@
 
         .experience-image-wrapper {
             padding: var(--spacing-sm);
+            overflow-x: auto;
+            /* Ensure scrolling is enabled */
+            justify-content: flex-start;
+            /* Align start to make scrolling natural */
+
+            .experience-full-image {
+                min-width: 600px;
+                /* Force minimum width for readability */
+                max-width: none;
+                /* Disable constraints */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                /* Lighter shadow for mobile */
+            }
         }
 
         .experience-cta {

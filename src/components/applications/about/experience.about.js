@@ -2,6 +2,7 @@ import React from "react";
 import "./about.scss";
 import upworkAvatar from "../../../assets/images/baseImages/upwork_prof.png";
 import user from "../../../utils/data/user.config";
+import LazyImage from "../../base/lazyImage";
 
 
 function Experience() {
@@ -15,7 +16,7 @@ function Experience() {
 			</div>
 
 			<div className="experience-image-wrapper">
-				<img
+				<LazyImage
 					src={upworkAvatar}
 					alt={`${user.firstName} ${user.lastName} Upwork Profile`}
 					className="experience-full-image"

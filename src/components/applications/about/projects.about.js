@@ -7,6 +7,7 @@ import {
 	TooltipDelay,
 	TooltipHost,
 } from "@fluentui/react";
+import LazyImage from "../../base/lazyImage";
 
 function Projects() {
 	return (
@@ -26,7 +27,7 @@ function Projects() {
 								{/* Project Image - Static, full-width view */}
 								{project.image && (
 									<div className="project-media">
-										<img
+										<LazyImage
 											src={project.image}
 											alt={project.projectName}
 											className="project-image"
