@@ -1,19 +1,20 @@
-import ResumePDF from "./ARNOLD ADERO's Resume.pdf";
+
 import user_avatar from "../../assets/images/baseImages/profile.webp";
 
 import coldStorageGif from "../../assets/images/projects/coldstorage.webp";
 
 const user = {
-	firstName: "Arnold",
-	lastName: "Adero",
+	firstName: "Ken",
+	lastName: "Maina",
 	role: "Full-Stack Developer",
 	userImage: user_avatar,
-	resume: ResumePDF,
-	email: "arnold@mvuvi.co.ke",
-	linkedIn: "in/arnold-adero-49607955",
-	upwork: "arnoldadero",
-	gitHub: "arnoldadero",
-	whatsapp: "+254733943486",
+	location: "Nairobi, Kenya",
+	phone: "+254 113381186",
+	email: "kenp7145@gmail.com",
+	linkedIn: "in/ken-maina-49607955",
+	upwork: "kenmaina",
+	gitHub: "kenmaina",
+	whatsapp: "+254 113381186",
 	aboutMe: {
 		intro: "Forward-thinking Full-Stack Developer with 10+ years of experience delivering scalable, high-performance web applications and digital systems.",
 		description:
@@ -25,12 +26,12 @@ const user = {
 			organization: "Upwork (Remote)",
 			organizationPicture: null,
 			isCurrent: true,
-			startDate: "2011",
+			startDate: "2025",
 			endDate: "Present",
 			positions: [
 				{
 					positionName: "Full-Stack Developer",
-					startDate: "2011",
+					startDate: "2025",
 					endDate: "Present",
 					isPresent: true,
 					description:
@@ -47,7 +48,7 @@ const user = {
 			positions: [
 				{
 					positionName: "Owner",
-					startDate: "2019",
+					startDate: "2022",
 					endDate: "Present",
 					isPresent: true,
 					description:
@@ -76,13 +77,13 @@ const user = {
 			organization: "Weddings in Winnipeg",
 			organizationPicture: null,
 			isCurrent: false,
-			startDate: "2012",
-			endDate: "2016",
+			startDate: "2024",
+			endDate: "2025",
 			positions: [
 				{
 					positionName: "Operations Manager",
-					startDate: "2012",
-					endDate: "2016",
+					startDate: "2024",
+					endDate: "2025",
 					isPresent: false,
 					description:
 						"Oversaw operations and web management for a Canadian bridal media company, optimizing workflow efficiency and digital reach.",
@@ -109,14 +110,14 @@ const user = {
 	],
 	education: [
 		{
-			instituteName: "Zone 01 Kisumu",
+			instituteName: "Kabete National Polytechnic",
 			degree: "Software Development",
 			year: "2024", // Assuming recent or current based on context, user didn't specify year but it's a new program usually. Leaving blank or estimating? I'll put a placeholder year or just leave it. Let's assume recent.
 			id: 1,
 		},
 		{
 			instituteName: "University of Nairobi",
-			degree: "Bachelor of Applied Science (BASc), Chemical Engineering",
+			degree: "Bachelor of Science (BASc), Network Engineering",
 			year: "", // User didn't specify year
 			id: 2,
 		},
@@ -178,7 +179,7 @@ const user = {
 				"PHP",
 				"HTML5/CSS3",
 				"Git/GitHub",
-				"Agile",
+				"JavaScript Testing (Jest, Mocha)",
 				"SEO Optimization",
 				"UI/UX Collaboration",
 			],
