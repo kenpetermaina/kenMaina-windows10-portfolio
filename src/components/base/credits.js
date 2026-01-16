@@ -148,7 +148,7 @@ function Credits(props) {
 								&hearts;{" "}
 							</span>
 						</TooltipHost>
-						by Arnold Adero
+						by Ken Maina
 					</p>
 				</div>
 			</div>

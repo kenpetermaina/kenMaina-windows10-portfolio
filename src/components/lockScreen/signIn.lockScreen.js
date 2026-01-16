@@ -26,7 +26,7 @@ function SignInScreen() {
 				</div>
 				<div>
 					<h1 className="uk-heading-small  font-color-white">
-						Arnold Adero
+						Ken Maina
 					</h1>
 				</div>
 				<div>
